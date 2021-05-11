@@ -28,16 +28,15 @@ public class HomeForm extends Form {
 
         add(new Label("Choose an option"));
         Button map = new Button("maps");
-        Button btnAddnutritionniste = new Button("Add nutritionniste");
-        Button btnListnutritionniste = new Button("List nutritionniste");
         Button btnhomeregime = new Button("home regime");
-      btnhomeregime.addActionListener(e -> new homeregime(current).show());
-       
+        Button btnhomenut = new Button("home Nutritionniste");
+
+        btnhomeregime.addActionListener(e -> new homeregime(current).show());
+         btnhomenut.addActionListener(e -> new homenutritionniste(current).show());
+
 
  
-           btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
-        btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
-        addAll(btnAddnutritionniste, btnListnutritionniste,btnhomeregime);
+          addAll(btnhomeregime,btnhomenut);
         
           map.addActionListener(e -> new maps(current).show());
         addAll(map);

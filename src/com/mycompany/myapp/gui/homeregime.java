@@ -22,7 +22,7 @@ public class homeregime extends Form {
 public homeregime(Form previous){
    current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home Regime");
-       // setLayout(BoxLayout.y());
+        setLayout(BoxLayout.y());
 
            add(new Label("Choose an option"));
         Button btnAddregime = new Button("Add regime");
@@ -34,9 +34,7 @@ public homeregime(Form previous){
         uppdate.addActionListener(e -> new rechercheformregime(current).show());
         addAll(btnAddregime, btnListregime,uppdate);
 
-         map.addActionListener(e -> new maps(current).show());
-        addAll(map);
-
+        
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     

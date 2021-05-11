@@ -26,7 +26,8 @@ public class maps extends Form{
     
          
          
-         
+    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+
        
      
      }
