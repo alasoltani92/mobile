@@ -196,7 +196,7 @@ public class Serviceregime {
     
     
     //Delete 
-    public boolean deleteregime(int id ) {
+    public void deleteregime(int id ) {
         String url = Statics.BASE_URL +"/delregime?id="+id;
         
         req.setUrl(url);
@@ -210,7 +210,7 @@ public class Serviceregime {
         });
         
         NetworkManager.getInstance().addToQueueAndWait(req);
-        return  resultOk;
+       // return  resultOk;
     }
     
     

@@ -22,7 +22,7 @@ public class ListregimeForm extends Form{
 
     public ListregimeForm(Form previous) {
         setTitle("List regime");
-        
+            setLayout(BoxLayout.y());
        
         Serviceregime ServiceregimeInstance=new Serviceregime();
        //sp.setText( Serviceregime.getInstance().affichageregime().toString());
@@ -41,7 +41,7 @@ public class ListregimeForm extends Form{
         }
         
        
-       getToolbar().addMaterialCommandToLeftBar("regime", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
     
     

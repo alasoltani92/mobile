@@ -10,6 +10,7 @@ import static com.codename1.push.PushContent.setTitle;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
  */
 public class rechercheformregime extends Form{
      public rechercheformregime(Form previous) {
-    
+        setLayout(BoxLayout.y());
       setTitle("recherche regime");
         
         TextField tfid = new TextField("","id regime");
@@ -34,8 +35,9 @@ public class rechercheformregime extends Form{
           TextField image = new TextField("","image regime");
          Button btnValider = new Button("recherche");
           Button btnmodifier = new Button("modifier");
+          Button btnsupp = new Button("supprimer");
          addAll(tfid,type,desc,image);
-         addAll(btnValider,btnmodifier);
+         addAll(btnValider,btnmodifier,btnsupp);
                  btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -58,17 +60,27 @@ public class rechercheformregime extends Form{
             @Override
             public void actionPerformed(ActionEvent evt) {
               regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
-                        if( Serviceregime.getInstance().modifierReclamation(t))
+                      if( Serviceregime.getInstance().modifierReclamation(t))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                
            
-                
+              
             }
         });
  
                  
+              btnmodifier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+             // regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
+           
+                Serviceregime.getInstance().deleteregime(Integer.parseInt( tfid.getText().toString()));
+                Dialog.show("Success","Connection accepted",new Command("OK"));
+            }
+        });         
                  
-                 
-                 
+        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
+                , e-> previous.showBack()); // Revenir vers l'interface précédente
+                         
 }
 }

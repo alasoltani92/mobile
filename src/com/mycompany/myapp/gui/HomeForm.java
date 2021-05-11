@@ -32,7 +32,7 @@ public class HomeForm extends Form {
         Button btnAddnutritionniste = new Button("Add nutritionniste");
         Button btnListnutritionniste = new Button("List nutritionniste");
 Button uppdate = new Button("Update");
-
+Button map = new Button("maps");
         btnAddregime.addActionListener(e -> new AddregimeForm(current).show());
         btnListregime.addActionListener(e -> new ListregimeForm(current).show());
         addAll(btnAddregime, btnListregime);
@@ -41,6 +41,9 @@ Button uppdate = new Button("Update");
         btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
          uppdate.addActionListener(e -> new rechercheformregime(current).show());
         addAll(btnAddnutritionniste, btnListnutritionniste,uppdate);
+        
+          map.addActionListener(e -> new maps(current).show());
+        addAll(map);
 
 
     }

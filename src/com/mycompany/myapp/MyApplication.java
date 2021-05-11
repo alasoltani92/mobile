@@ -13,6 +13,9 @@ import com.codename1.ui.Toolbar;
 import java.io.IOException;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.io.NetworkEvent;
+import com.codename1.maps.MapComponent;
+import com.codename1.ui.Container;
+import com.codename1.ui.util.UIBuilder;
 import com.mycompany.myapp.gui.HomeForm;
 
 /**
@@ -48,7 +51,13 @@ public class MyApplication {
     }
     
     public void start() {
-        new HomeForm().show();
+      new HomeForm().show();
+         /* Form hi =new Form();
+       UIBuilder.registerCustomComponent("MapComponent", MapComponent.class);
+        UIBuilder uib = new UIBuilder();
+        Container cn =uib.createContainer(theme, "GUI 1");
+        hi =(Form) cn;
+        hi.show();*/
     }
 
     public void stop() {
