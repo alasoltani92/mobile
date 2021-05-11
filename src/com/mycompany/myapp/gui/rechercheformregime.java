@@ -1,0 +1,74 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.myapp.gui;
+
+import com.codename1.components.SpanLabel;
+import static com.codename1.push.PushContent.setTitle;
+import com.codename1.ui.Button;
+import com.codename1.ui.Command;
+import com.codename1.ui.Dialog;
+import com.codename1.ui.Form;
+import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
+import com.codename1.ui.layouts.BoxLayout;
+import com.mycompany.myapp.entities.regime;
+import com.mycompany.myapp.services.Serviceregime;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author soltani med ala
+ */
+public class rechercheformregime extends Form{
+     public rechercheformregime(Form previous) {
+    
+      setTitle("recherche regime");
+        
+        TextField tfid = new TextField("","id regime");
+        TextField type = new TextField("","type regime");
+         TextField desc = new TextField("","desc regime");
+          TextField image = new TextField("","image regime");
+         Button btnValider = new Button("recherche");
+          Button btnmodifier = new Button("modifier");
+         addAll(tfid,type,desc,image);
+         addAll(btnValider,btnmodifier);
+                 btnValider.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              
+               
+                   
+                           
+                         
+                             ArrayList<regime> res= Serviceregime.getInstance().Detailregime(Integer.parseInt(tfid.getText().toString()));
+      type.setText(res.get(0).getType());
+      desc.setText(res.get(0).getDescription());
+         image.setText(res.get(0).getImage()); 
+           
+             
+            }
+        });
+          
+                 
+              btnmodifier.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
+                        if( Serviceregime.getInstance().modifierReclamation(t))
+                            Dialog.show("Success","Connection accepted",new Command("OK"));
+               
+           
+                
+            }
+        });
+ 
+                 
+                 
+                 
+                 
+}
+}
