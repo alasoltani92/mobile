@@ -63,6 +63,22 @@ public class servicenutritionniste {
         NetworkManager.getInstance().addToQueueAndWait(req);//execution ta3 request sinon yet3ada chy dima nal9awha
         return true;
     }
+    //mail
+        public boolean mail () {
+        String url = Statics.BASE_URL +"/e-mail";
+        
+        req.setUrl(url);
+        
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                    
+            }
+        });
+        
+        NetworkManager.getInstance().addToQueueAndWait(req);
+        return  resultOk;
+    }
     
     
     //affichage

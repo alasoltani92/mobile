@@ -23,11 +23,15 @@ public homenutritionniste(Form previous){
         setTitle("Home Nutritionniste");
         setLayout(BoxLayout.y());
 
-       Button btnAddnutritionniste = new Button("Add nutritionniste");
+        Button btnAddnutritionniste = new Button("Add nutritionniste");
         Button btnListnutritionniste = new Button("List nutritionniste");
-       btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
+        Button btnmail = new Button("Prendre rendez-vous");
+
+        btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
         btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
-                 addAll(btnAddnutritionniste, btnListnutritionniste);
+        btnmail.addActionListener(e -> new maillingform(current).show());
+
+        addAll(btnAddnutritionniste, btnListnutritionniste,btnmail);
 
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
