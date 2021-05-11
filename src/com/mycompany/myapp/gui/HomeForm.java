@@ -27,20 +27,17 @@ public class HomeForm extends Form {
         setLayout(BoxLayout.y());
 
         add(new Label("Choose an option"));
-        Button btnAddregime = new Button("Add regime");
-        Button btnListregime = new Button("List regime");
+        Button map = new Button("maps");
         Button btnAddnutritionniste = new Button("Add nutritionniste");
         Button btnListnutritionniste = new Button("List nutritionniste");
-Button uppdate = new Button("Update");
-Button map = new Button("maps");
-        btnAddregime.addActionListener(e -> new AddregimeForm(current).show());
-        btnListregime.addActionListener(e -> new ListregimeForm(current).show());
-        addAll(btnAddregime, btnListregime);
-        
-        btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
+        Button btnhomeregime = new Button("home regime");
+      btnhomeregime.addActionListener(e -> new homeregime(current).show());
+       
+
+ 
+           btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
         btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
-         uppdate.addActionListener(e -> new rechercheformregime(current).show());
-        addAll(btnAddnutritionniste, btnListnutritionniste,uppdate);
+        addAll(btnAddnutritionniste, btnListnutritionniste,btnhomeregime);
         
           map.addActionListener(e -> new maps(current).show());
         addAll(map);
