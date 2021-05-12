@@ -64,7 +64,18 @@ public class AddregimeForm extends Form{
         addAll(tftype,tfdescription,tfimage,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
+           getToolbar().addCommandToLeftSideMenu("name", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              
+                }
                 
+                
+            
+           
+           
+           
+           } );
     }
     
     

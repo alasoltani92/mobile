@@ -9,6 +9,7 @@ import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.services.Serviceregime;
 import com.mycompany.myapp.entities.regime;
@@ -29,9 +30,10 @@ public class ListregimeForm extends Form{
         ArrayList<regime> res= ServiceregimeInstance.affichageregime();
         for(int i=0; i<res.size();i++)
         {
-             SpanLabel description = new SpanLabel("des : "+res.get(i).getDescription().toString());
+            Form h1=new Form(BoxLayout.y());
+             Label description = new Label("des : "+res.get(i).getDescription().toString());
         
-             SpanLabel type = new SpanLabel(" type : "+res.get(i).getType().toString());
+             Label type = new Label(" type : "+res.get(i).getType().toString());
           
          add(description);
         
