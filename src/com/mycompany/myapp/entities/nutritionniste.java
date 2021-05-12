@@ -82,6 +82,17 @@ public class nutritionniste {
         this.nom = no;
         this.prenom = prenom;
         this.addr = addr;
+                this.num = num;
+
+        this.mail = mail;
+        this.image = image;
+    }
+
+    public nutritionniste(int id, String nom, String prenom, String addr, String mail, String image) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.addr = addr;
         this.mail = mail;
         this.image = image;
     }

@@ -5,8 +5,6 @@
  */
 package com.mycompany.myapp.gui;
 
-import com.codename1.components.SpanLabel;
-import static com.codename1.push.PushContent.setTitle;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
@@ -16,27 +14,31 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
-import com.mycompany.myapp.entities.regime;
-import com.mycompany.myapp.services.Serviceregime;
+import com.mycompany.myapp.entities.nutritionniste;
+import com.mycompany.myapp.services.servicenutritionniste;
 import java.util.ArrayList;
 
 /**
  *
  * @author soltani med ala
  */
-public class rechercheformregime extends Form{
-     public rechercheformregime(Form previous) {
+public class recherchenutritionniste extends Form {
+     public recherchenutritionniste(Form previous) {
         setLayout(BoxLayout.y());
-      setTitle("recherche regime");
+      setTitle("recherche nutritionniste");
         
-        TextField tfid = new TextField("","id regime");
-        TextField type = new TextField("","type regime");
-         TextField desc = new TextField("","desc regime");
-          TextField image = new TextField("","image regime");
+        TextField tfid = new TextField("","id nutritionniste");
+        TextField nom = new TextField("","nom nutritionniste");
+         TextField prenom = new TextField("","prenom nutritionniste");
+          TextField mail = new TextField("","mail nutritionniste");
+         TextField addr = new TextField("","adresse nutritionniste");
+         TextField num = new TextField("","telephone nutritionniste");
+         TextField image = new TextField("","photo nutritionniste");
+
          Button btnValider = new Button("recherche");
           Button btnmodifier = new Button("modifier");
           Button btnsupp = new Button("supprimer");
-         addAll(tfid,type,desc,image);
+         addAll(tfid,nom,prenom,mail,addr,num,image);
          addAll(btnValider,btnmodifier,btnsupp);
                  btnValider.addActionListener(new ActionListener() {
             @Override
@@ -46,10 +48,14 @@ public class rechercheformregime extends Form{
                    
                            
                          
-      ArrayList<regime> res= Serviceregime.getInstance().Detailregime(Integer.parseInt(tfid.getText().toString()));
-      type.setText(res.get(0).getType());
-      desc.setText(res.get(0).getDescription());
+      ArrayList<nutritionniste> res= servicenutritionniste.getInstance().Detailnutritionniste(Integer.parseInt(tfid.getText().toString()));
+      nom.setText(res.get(0).getNom());
+      prenom.setText(res.get(0).getPrenom());
       image.setText(res.get(0).getImage()); 
+      //num.setText(res.get(0).getNum());
+      addr.setText(res.get(0).getAddr());
+      mail.setText(res.get(0).getMail());
+
            
              
             }
@@ -59,8 +65,8 @@ public class rechercheformregime extends Form{
               btnmodifier.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-              regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
-                      if( Serviceregime.getInstance().modifierregime(t))
+              nutritionniste t = new nutritionniste(Integer.parseInt( tfid.getText()),nom.getText(),prenom.getText(),image.getText(),addr.getText(),mail.getText());
+                      if( servicenutritionniste.getInstance().modifiernutritionniste(t))
                             Dialog.show("Success","Connection accepted",new Command("OK"));
                
            
@@ -74,7 +80,7 @@ public class rechercheformregime extends Form{
             public void actionPerformed(ActionEvent evt) {
              // regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
            
-                Serviceregime.getInstance().deleteregime(Integer.parseInt( tfid.getText().toString()));
+                servicenutritionniste.getInstance().deletenutritionniste(Integer.parseInt( tfid.getText().toString()));
                 Dialog.show("Success","Connection accepted",new Command("OK"));
             }
         });         
@@ -83,4 +89,5 @@ public class rechercheformregime extends Form{
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
                          
 }
+    
 }

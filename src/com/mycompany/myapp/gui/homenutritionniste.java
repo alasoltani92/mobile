@@ -25,11 +25,16 @@ public homenutritionniste(Form previous){
 
         Button btnAddnutritionniste = new Button("Add nutritionniste");
         Button btnListnutritionniste = new Button("List nutritionniste");
+        Button uppdate = new Button("Update");
+
         Button btnmail = new Button("Prendre rendez-vous");
 
         btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
         btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
         btnmail.addActionListener(e -> new maillingform(current).show());
+        uppdate.addActionListener(e -> new recherchenutritionniste(current).show());
+        addAll(uppdate);
+
 
         addAll(btnAddnutritionniste, btnListnutritionniste,btnmail);
 

@@ -216,7 +216,7 @@ public class Serviceregime {
     
     
     //Update 
-    public boolean modifierReclamation(regime regime) {
+    public boolean modifierregime(regime regime) {
         String url = Statics.BASE_URL +"/upregime?id="+regime.getId()+"&type="+regime.getType()+"&description="+regime.getDescription()+"&image="+regime.getImage();
         req.setUrl(url);
         

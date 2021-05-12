@@ -157,43 +157,69 @@ public class servicenutritionniste {
     
     
     
-    //Detail Reclamation bensba l detail n5alihoa lel5r ba3d delete+update
+    //Detail nutritionniste bensba l detail n5alihoa lel5r ba3d delete+update
     
-   /* public regime DetailRecalamation( int id , regime regime) {
-        
-        String url = Statics.BASE_URL+"/detailReclamation?"+id;
-        req.setUrl(url);
-        
-        String str  = new String(req.getResponseData());
-        req.addResponseListener(((evt) -> {
-        
-            JSONParser jsonp = new JSONParser();
-            try {
+  public ArrayList<nutritionniste> Detailnutritionniste  ( int id) {
+        ArrayList<nutritionniste> result = new ArrayList<>();
+        String url = Statics.BASE_URL+"/detailnutritionniste?id="+id;
+            req.setUrl(url);
+      
+        req.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                JSONParser jsonp ;
+                jsonp = new JSONParser();
+            
                 
-                Map<String,Object>obj = jsonp.parseJSON(new CharArrayReader(new String(str).toCharArray()));
-                
-                reclamation.setObjet(obj.get("obj").toString());
-                reclamation.setDescription(obj.get("description").toString());
-                reclamation.setEtat(Integer.parseInt(obj.get("etat").toString()));
-                
-            }catch(IOException ex) {
-                System.out.println("error related to sql :( "+ex.getMessage());
+                try {
+                    Map<String,Object>mapnutritionniste = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
+                  
+                        nutritionniste re = new nutritionniste();
+                       
+                        //dima id fi codename one float 5outhouha
+                       float id = Float.parseFloat(mapnutritionniste.get("id").toString());
+                        
+                        String nom = mapnutritionniste.get("no").toString();                                                String type = mapnutritionniste.get("type").toString();
+                        String prenom = mapnutritionniste.get("prenom").toString();
+                        String addr = mapnutritionniste.get("addr").toString();
+                       float num = Float.parseFloat(mapnutritionniste.get("num").toString());
+                        String image = mapnutritionniste.get("image").toString();
+                       String mail = mapnutritionniste.get("mail").toString();
+                        re.setId((int)id);
+                        re.setNom(nom);
+                        re.setPrenom(prenom);
+                        re.setMail(mail);
+                        re.setAddr(addr);
+                        re.setNum((int)num);
+                        re.setImage(image);
+                        
+                        //Date 
+                       /* String DateConverter =  obj.get("date").toString().substring(obj.get("date").toString().indexOf("timestamp") + 10 , obj.get("date").toString().lastIndexOf("}"));
+                        
+                        Date currentTime = new Date(Double.valueOf(DateConverter).longValue() * 1000);
+                        
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                        String dateString = formatter.format(currentTime);
+                        re.setDate(dateString);*/
+                        
+                        //insert data into ArrayList result
+                       result.add(re);
+                    
+                    
+                }catch(Exception ex) {
+                    
+                    ex.printStackTrace();
+                }
+            
             }
-            
-            
-            System.out.println("data === "+str);
-            
-            
-            
-        }));
+        });
         
-              NetworkManager.getInstance().addToQueueAndWait(req);//execution ta3 request sinon yet3ada chy dima nal9awha
+      NetworkManager.getInstance().addToQueueAndWait(req);//execution ta3 request sinon yet3ada chy dima nal9awha
 
-              return reclamation;
+        return result;
         
         
-    }*/
-    
+    }    
     
     //Delete 
     public boolean deletenutritionniste (int id ) {
@@ -216,7 +242,7 @@ public class servicenutritionniste {
     
     
     //Update 
-    public boolean modifierReclamation(nutritionniste nutritionniste) {
+    public boolean modifiernutritionniste(nutritionniste nutritionniste) {
         String url =Statics.BASE_URL+"/upnutritionniste?no="+nutritionniste.getNom()+"&prenom="+nutritionniste.getPrenom()+"&addr="+nutritionniste.getAddr()+"&num="+nutritionniste.getNum()+"&mail="+nutritionniste.getMail()+"&image="+nutritionniste.getImage();
         req.setUrl(url);
         
