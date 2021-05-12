@@ -5,11 +5,13 @@
  */
 package com.mycompany.myapp.services;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.io.CharArrayReader;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.nutritionniste;
 import com.mycompany.myapp.utils.Statics;
@@ -113,6 +115,7 @@ public class servicenutritionniste {
 
                         String mail = obj.get("mail").toString();
                         String image = obj.get("image").toString();
+                          
                         
                         re.setId((int)id);
                         re.setNom(nom);

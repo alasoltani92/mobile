@@ -5,14 +5,17 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.components.SpanLabel;
 import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.services.Serviceregime;
 import com.mycompany.myapp.entities.regime;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +24,7 @@ import java.util.ArrayList;
  */
 public class ListregimeForm extends Form{
 
-    public ListregimeForm(Form previous) {
+    public ListregimeForm(Form previous) throws IOException {
         setTitle("List regime");
             setLayout(BoxLayout.y());
        
@@ -34,10 +37,13 @@ public class ListregimeForm extends Form{
              Label description = new Label("des : "+res.get(i).getDescription().toString());
         
              Label type = new Label(" type : "+res.get(i).getType().toString());
-          
+            /* Image imgPays = Image.createImage("/" + res.get(i).getImage());
+                            ImageViewer ivPays = new ImageViewer(imgPays);
+                        ImageViewer iv2 = new ImageViewer(ivPays.getImage());*/
+
          add(description);
-        
-         add(type);
+        //   add(iv2);
+           add(type);
         
         
         }
