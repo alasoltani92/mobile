@@ -10,8 +10,8 @@ package com.mycompany.myapp.entities;
  * @author soltani med ala
  */
 public class nutritionniste {
- int id,num;
- String nom,prenom,addr,mail,image;
+ int id;
+ String nom,prenom,addr,mail,image,num;
 
     @Override
     public String toString() {
@@ -26,11 +26,11 @@ public class nutritionniste {
         this.id = id;
     }
 
-    public int getNum() {
+    public String getNum() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setNum(String num) {
         this.num = num;
     }
 
@@ -77,7 +77,7 @@ public class nutritionniste {
     public nutritionniste() {
     }
 
-    public nutritionniste( String no, String prenom, String addr, String mail,int num, String image) {
+    public nutritionniste( String no, String prenom, String addr, String mail,String num, String image) {
         this.num = num;
         this.nom = no;
         this.prenom = prenom;
@@ -97,7 +97,7 @@ public class nutritionniste {
         this.image = image;
     }
 
-    public nutritionniste(int id, int num, String no, String prenom, String addr, String mail, String image) {
+    public nutritionniste(int id, String num, String no, String prenom, String addr, String mail, String image) {
         this.id = id;
         this.num = num;
         this.nom = no;

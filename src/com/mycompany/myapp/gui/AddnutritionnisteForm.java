@@ -54,9 +54,17 @@ public class AddnutritionnisteForm extends Form{
                 {
                     try {
                         nutritionniste t = new nutritionniste(tfnom.getText(), tfprenom.getText(),tfmail.getText()
-                        ,tfaddr.getText(),Integer.parseInt(tfnum.getText()),tfimage.getText());
-                        if( servicenutritionniste.getInstance().ajoutnutritionniste(t))
+                        ,tfaddr.getText(),tfnum.getText(),tfimage.getText());
+                        if( servicenutritionniste.getInstance().ajoutnutritionniste(t)){
                             Dialog.show("Success","Connection accepted",new Command("OK"));
+                            tfnom.clear();
+                            tfprenom.clear();
+                            tfmail.clear();
+                            tfnum.clear();
+                            tfaddr.clear();
+                            tfimage.clear();
+                                   
+                        }
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     } catch (NumberFormatException e) {

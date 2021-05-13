@@ -24,17 +24,17 @@ import java.util.ArrayList;
  */
 public class ListregimeForm extends Form{
 
-    public ListregimeForm(Form previous) throws IOException {
+    public ListregimeForm(Form previous) {
         setTitle("List regime");
             setLayout(BoxLayout.y());
-       
+
         Serviceregime ServiceregimeInstance=new Serviceregime();
        //sp.setText( Serviceregime.getInstance().affichageregime().toString());
         ArrayList<regime> res= ServiceregimeInstance.affichageregime();
         for(int i=0; i<res.size();i++)
         {
             Form h1=new Form(BoxLayout.y());
-             Label description = new Label("des : "+res.get(i).getDescription().toString());
+             Label description = new Label("description : "+res.get(i).getDescription().toString());
         
              Label type = new Label(" type : "+res.get(i).getType().toString());
             /* Image imgPays = Image.createImage("/" + res.get(i).getImage());

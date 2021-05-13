@@ -6,6 +6,7 @@
 package com.mycompany.myapp.gui;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.ComboBox;
 import com.codename1.ui.Command;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
@@ -32,7 +33,12 @@ public class AddregimeForm extends Form{
         setTitle("Add a new regime");
         setLayout(BoxLayout.y());
         
-        TextField tftype = new TextField("","type regime");
+        ComboBox type=new ComboBox();
+            
+            type.addItem("prise de masse");
+            type.addItem("minceur");
+         
+       // TextField tftype = new TextField("","type regime");
         TextField tfdescription= new TextField("", "description");
                 TextField tfimage= new TextField("", "image");
 
@@ -41,14 +47,19 @@ public class AddregimeForm extends Form{
         btnValider.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                if ((tftype.getText().length()==0)||(tfdescription.getText().length()==0)||(tfimage.getText().length()==0))
+                if ((tfdescription.getText().length()==0)||(tfimage.getText().length()==0))
                     Dialog.show("Alert", "Please fill all the fields", new Command("OK"));
                 else
                 {
                     try {
-                        regime t = new regime(tftype.getText(), tfdescription.getText(),tfimage.getText());
+                        regime t = new regime(type.getSelectedItem().toString(), tfdescription.getText(),tfimage.getText());
                         if( Serviceregime.getInstance().ajoutRegime(t))
+                        {
                             Dialog.show("Success","Connection accepted",new Command("OK"));
+                            tfdescription.clear();
+                            tfimage.clear();
+
+                        }
                         else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     } catch (NumberFormatException e) {
@@ -61,7 +72,7 @@ public class AddregimeForm extends Form{
             }
         });
         
-        addAll(tftype,tfdescription,tfimage,btnValider);
+        addAll(type,tfdescription,tfimage,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
            getToolbar().addCommandToLeftSideMenu("name", null, new ActionListener(){

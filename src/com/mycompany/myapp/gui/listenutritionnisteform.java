@@ -14,6 +14,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.nutritionniste;
 import com.mycompany.myapp.services.Serviceregime;
 import com.mycompany.myapp.services.servicenutritionniste;
+
 import java.util.ArrayList;
  
 
@@ -35,26 +36,27 @@ public class listenutritionnisteform extends Form{
        add(sp);
        */
                servicenutritionniste ServicenutritionnisteInstance=new servicenutritionniste();
-
           ArrayList<nutritionniste> res= ServicenutritionnisteInstance.affichagenutritionniste();
+          String j;
         for(int i=0; i<res.size();i++)
         {
             Form h1=new Form(BoxLayout.y());
              Label nom = new Label("nom : "+res.get(i).getNom().toString());
-        
+       
              Label prenom = new Label(" prenom : "+res.get(i).getPrenom().toString());
              Label mail = new Label(" e-mail : "+res.get(i).getMail().toString());
              Label addr = new Label(" adresse : "+res.get(i).getAddr().toString());
-            // Label num = new Label(" telephone : "+res.get(i)..getNum().toString());
+           // Label num = new Label(" telephone : "+res.get(i).getNum().toString());
              Label image = new Label(" image : "+res.get(i).getImage().toString());
-
+ Label pass = new Label("------------------------------------------------");
           
          add(nom);
         add(prenom);
          add(mail);
          add(addr);
-        // add(num);
+      //   add(num);
          add(image);
+         add(pass);
         
         
         }

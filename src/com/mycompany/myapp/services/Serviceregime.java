@@ -93,7 +93,7 @@ public class Serviceregime {
                         
                         String type = obj.get("type").toString();
                         
-                        String description = obj.get("description").toString();
+                       String description = obj.get("description").toString();
                         String image = obj.get("image").toString();
                         
                         re.setId((int)id);

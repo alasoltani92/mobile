@@ -182,7 +182,8 @@ public class servicenutritionniste {
                         String nom = mapnutritionniste.get("no").toString();                                                String type = mapnutritionniste.get("type").toString();
                         String prenom = mapnutritionniste.get("prenom").toString();
                         String addr = mapnutritionniste.get("addr").toString();
-                       float num = Float.parseFloat(mapnutritionniste.get("num").toString());
+                     //  float num = Float.parseFloat(mapnutritionniste.get("num").toString());
+                      String num = mapnutritionniste.get("num").toString();
                         String image = mapnutritionniste.get("image").toString();
                        String mail = mapnutritionniste.get("mail").toString();
                         re.setId((int)id);
@@ -190,7 +191,7 @@ public class servicenutritionniste {
                         re.setPrenom(prenom);
                         re.setMail(mail);
                         re.setAddr(addr);
-                        re.setNum((int)num);
+                        re.setNum(num);
                         re.setImage(image);
                         
                         //Date 
