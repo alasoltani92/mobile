@@ -5,10 +5,13 @@
  */
 package com.mycompany.myapp.gui;
 
+import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
 import com.codename1.ui.Form;
+import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
+import java.io.IOException;
 
 /**
  *
@@ -25,7 +28,7 @@ public class HomeForm extends Form {
         current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home");
         setLayout(BoxLayout.y());
-
+  
         add(new Label("Choose an option"));
         Button map = new Button("maps");
         Button btnhomeregime = new Button("home regime");
@@ -34,13 +37,13 @@ public class HomeForm extends Form {
         btnhomeregime.addActionListener(e -> new homeregime(current).show());
          btnhomenut.addActionListener(e -> new homenutritionniste(current).show());
 
-
- 
           addAll(btnhomeregime,btnhomenut);
         
           map.addActionListener(e -> new maps(current).show());
         addAll(map);
+         
 
+        
 
     }
 

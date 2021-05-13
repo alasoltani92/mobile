@@ -149,7 +149,7 @@ public class Serviceregime {
                 
                 try {
                     Map<String,Object>mapregime = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
-                    System.out.println("ffffffffff"+mapregime.get("type"));
+                
                   
                         regime re = new regime();
                        
@@ -218,6 +218,7 @@ public class Serviceregime {
     //Update 
     public boolean modifierregime(regime regime) {
         String url = Statics.BASE_URL +"/upregime?id="+regime.getId()+"&type="+regime.getType()+"&description="+regime.getDescription()+"&image="+regime.getImage();
+       
         req.setUrl(url);
         
         req.addResponseListener(new ActionListener<NetworkEvent>() {

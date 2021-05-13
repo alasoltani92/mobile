@@ -31,12 +31,25 @@ public class ListregimeForm extends Form{
         Serviceregime ServiceregimeInstance=new Serviceregime();
        //sp.setText( Serviceregime.getInstance().affichageregime().toString());
         ArrayList<regime> res= ServiceregimeInstance.affichageregime();
+            Form h1=new Form(BoxLayout.y());
         for(int i=0; i<res.size();i++)
         {
-            Form h1=new Form(BoxLayout.y());
+        
+                             Label pass = new Label("------------------------------------------------");
+
              Label description = new Label("description : "+res.get(i).getDescription().toString());
         
              Label type = new Label(" type : "+res.get(i).getType().toString());
+              try {
+                Image imgPays = Image.createImage(""+res.get(i).getImage().toString());
+                ImageViewer ivPays = new ImageViewer(imgPays);
+                   add(ivPays);
+                   
+  }
+ catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+
             /* Image imgPays = Image.createImage("/" + res.get(i).getImage());
                             ImageViewer ivPays = new ImageViewer(imgPays);
                         ImageViewer iv2 = new ImageViewer(ivPays.getImage());*/
@@ -44,6 +57,7 @@ public class ListregimeForm extends Form{
          add(description);
         //   add(iv2);
            add(type);
+          add(pass);
         
         
         }

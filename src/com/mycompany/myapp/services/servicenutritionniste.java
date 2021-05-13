@@ -161,7 +161,8 @@ public class servicenutritionniste {
     
   public ArrayList<nutritionniste> Detailnutritionniste  ( int id) {
         ArrayList<nutritionniste> result = new ArrayList<>();
-        String url = Statics.BASE_URL+"/detailnutritionniste?id="+id;
+        String url = Statics.BASE_URL+"/detailnut?id="+id;
+    
             req.setUrl(url);
       
         req.addResponseListener(new ActionListener<NetworkEvent>() {
@@ -172,14 +173,16 @@ public class servicenutritionniste {
             
                 
                 try {
+                 
                     Map<String,Object>mapnutritionniste = jsonp.parseJSON(new CharArrayReader(new String(req.getResponseData()).toCharArray()));
-                  
+                       
+                        
                         nutritionniste re = new nutritionniste();
                        
                         //dima id fi codename one float 5outhouha
-                       float id = Float.parseFloat(mapnutritionniste.get("id").toString());
+                      // float id = Float.parseFloat(mapnutritionniste.get("id").toString());
                         
-                        String nom = mapnutritionniste.get("no").toString();                                                String type = mapnutritionniste.get("type").toString();
+                        String nom = mapnutritionniste.get("no").toString();                                                
                         String prenom = mapnutritionniste.get("prenom").toString();
                         String addr = mapnutritionniste.get("addr").toString();
                      //  float num = Float.parseFloat(mapnutritionniste.get("num").toString());
@@ -193,7 +196,7 @@ public class servicenutritionniste {
                         re.setAddr(addr);
                         re.setNum(num);
                         re.setImage(image);
-                        
+                       
                         //Date 
                        /* String DateConverter =  obj.get("date").toString().substring(obj.get("date").toString().indexOf("timestamp") + 10 , obj.get("date").toString().lastIndexOf("}"));
                         
@@ -244,9 +247,9 @@ public class servicenutritionniste {
     
     //Update 
     public boolean modifiernutritionniste(nutritionniste nutritionniste) {
-        String url =Statics.BASE_URL+"/upnutritionniste?no="+nutritionniste.getNom()+"&prenom="+nutritionniste.getPrenom()+"&addr="+nutritionniste.getAddr()+"&num="+nutritionniste.getNum()+"&mail="+nutritionniste.getMail()+"&image="+nutritionniste.getImage();
+        String url =Statics.BASE_URL+"/upnutritionniste?id="+nutritionniste.getId()+"&no="+nutritionniste.getNom()+"&prenom="+nutritionniste.getPrenom()+"&addr="+nutritionniste.getAddr()+"&num="+nutritionniste.getNum()+"&mail="+nutritionniste.getMail()+"&image="+nutritionniste.getImage();
         req.setUrl(url);
-        
+        System.out.println("urrlllll"+url);
         req.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

@@ -47,6 +47,7 @@ public class rechercheformregime extends Form{
                            
                          
       ArrayList<regime> res= Serviceregime.getInstance().Detailregime(Integer.parseInt(tfid.getText().toString()));
+         System.out.println("hhhhhhhhh"+res);
       type.setText(res.get(0).getType());
       desc.setText(res.get(0).getDescription());
       image.setText(res.get(0).getImage()); 

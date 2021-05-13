@@ -49,10 +49,11 @@ public class recherchenutritionniste extends Form {
                            
                          
       ArrayList<nutritionniste> res= servicenutritionniste.getInstance().Detailnutritionniste(Integer.parseInt(tfid.getText().toString()));
+               
       nom.setText(res.get(0).getNom());
       prenom.setText(res.get(0).getPrenom());
       image.setText(res.get(0).getImage()); 
-      //num.setText(res.get(0).getNum());
+      num.setText(res.get(0).getNum());
       addr.setText(res.get(0).getAddr());
       mail.setText(res.get(0).getMail());
 
@@ -75,7 +76,7 @@ public class recherchenutritionniste extends Form {
         });
  
                  
-              btnmodifier.addActionListener(new ActionListener() {
+              btnsupp.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
              // regime t = new regime(Integer.parseInt( tfid.getText()), type.getText(),desc.getText(),image.getText());
