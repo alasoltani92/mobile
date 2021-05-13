@@ -25,8 +25,11 @@ public homeregime(Form previous){
    current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home Regime");
         setLayout(BoxLayout.y());
-
+        
+      
+     
            add(new Label("Choose an option"));
+
         Button btnAddregime = new Button("Add regime");
         Button btnListregime = new Button("List regime");
         Button uppdate = new Button("Update");
@@ -48,7 +51,10 @@ public homeregime(Form previous){
                  
            } );*/
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
-
+   FontImage arrowDown = FontImage.createMaterial(FontImage.MATERIAL_KEYBOARD_ARROW_DOWN, "Label", 3);
+        
+       
+       
     
 }
 }
