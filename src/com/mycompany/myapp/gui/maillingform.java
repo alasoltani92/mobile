@@ -46,9 +46,13 @@ public class maillingform extends Form{
                 {
                     try {
                         regime t = new regime(tfmail.getText(), tfmail1.getText(),tfmsg.getText());
-                        if( servicenutritionniste.getInstance().mail())
+                        if( servicenutritionniste.getInstance().mail()){
                             Dialog.show("Success","Connection accepted",new Command("OK"));
-                        else
+                                                    tfmail.clear();
+                                                    tfmail1.clear();
+                                                    tfmsg.clear();
+
+                        }else
                             Dialog.show("ERROR", "Server error", new Command("OK"));
                     } catch (NumberFormatException e) {
                         Dialog.show("ERROR", "Status must be a number", new Command("OK"));
@@ -57,6 +61,7 @@ public class maillingform extends Form{
                 }
                 
             }
+            
             
 
              });

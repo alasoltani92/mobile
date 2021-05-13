@@ -34,7 +34,7 @@ public homenutritionniste(Form previous){
         uppdate.addActionListener(e -> new recherchenutritionniste(current).show());
 
 
-        addAll(btnListnutritionniste,btnAddnutritionniste,btnmail,uppdate );
+        addAll(btnListnutritionniste,btnmail,btnAddnutritionniste,uppdate );
 
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 

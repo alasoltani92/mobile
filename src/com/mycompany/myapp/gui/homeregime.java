@@ -10,6 +10,8 @@ import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 
 /**
@@ -32,12 +34,19 @@ public homeregime(Form previous){
         btnAddregime.addActionListener(e -> new AddregimeForm(current).show());
         btnListregime.addActionListener(e -> new ListregimeForm(current).show());
         uppdate.addActionListener(e -> new rechercheformregime(current).show());
-        addAll(btnAddregime, btnListregime,uppdate);
-
-         
+        addAll(btnListregime,IMC,btnAddregime, uppdate);
           IMC.addActionListener(e -> new IMC(current).show());
-          addAll(IMC);
-         
+             /* getToolbar().addCommandToLeftSideMenu("Update", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+
+             uppdatenew rechercheformregime(current).show());   
+                 
+
+          }
+
+                 
+           } );*/
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     
