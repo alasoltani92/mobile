@@ -28,13 +28,16 @@ public homeregime(Form previous){
         Button btnAddregime = new Button("Add regime");
         Button btnListregime = new Button("List regime");
         Button uppdate = new Button("Update");
-        Button map = new Button("maps");
+        Button IMC = new Button("IMC");
         btnAddregime.addActionListener(e -> new AddregimeForm(current).show());
         btnListregime.addActionListener(e -> new ListregimeForm(current).show());
         uppdate.addActionListener(e -> new rechercheformregime(current).show());
         addAll(btnAddregime, btnListregime,uppdate);
 
-        
+         
+          IMC.addActionListener(e -> new IMC(current).show());
+          addAll(IMC);
+         
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     

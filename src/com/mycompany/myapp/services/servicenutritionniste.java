@@ -111,8 +111,7 @@ public class servicenutritionniste {
                         String nom = obj.get("no").toString();
                         String prenom = obj.get("prenom").toString();
                         String addr = obj.get("addr").toString();
-                        float num= Float.parseFloat(obj.get("num").toString());
-
+                        String num= obj.get("num").toString();
                         String mail = obj.get("mail").toString();
                         String image = obj.get("image").toString();
                           
@@ -121,7 +120,7 @@ public class servicenutritionniste {
                         re.setNom(nom);
                          re.setPrenom(prenom);
                         re.setAddr(addr);
-                        re.setId((int)num);
+                        re.setNum(num);
                         re.setMail(mail);
                         re.setImage(image);
                         

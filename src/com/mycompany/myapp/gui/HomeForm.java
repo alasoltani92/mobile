@@ -30,7 +30,7 @@ public class HomeForm extends Form {
         setLayout(BoxLayout.y());
   
         add(new Label("Choose an option"));
-        Button map = new Button("maps");
+      
         Button btnhomeregime = new Button("home regime");
         Button btnhomenut = new Button("home Nutritionniste");
 
@@ -38,10 +38,7 @@ public class HomeForm extends Form {
          btnhomenut.addActionListener(e -> new homenutritionniste(current).show());
 
           addAll(btnhomeregime,btnhomenut);
-        
-          map.addActionListener(e -> new maps(current).show());
-        addAll(map);
-         
+       
 
         
 

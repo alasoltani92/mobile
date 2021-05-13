@@ -9,6 +9,8 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
+import com.codename1.ui.Label;
+import com.codename1.ui.TextField;
 import com.codename1.ui.events.ActionListener;
 import com.mycompany.myapp.entities.regime;
 import com.mycompany.myapp.utils.Statics;
@@ -233,6 +235,41 @@ public class Serviceregime {
     return resultOk;
         
     }
+       public String IMC(float p,float t)
+       {
+       
+     
+    
+  double poids =p;
+       double taille =t;
+       String res;
+       System.out.print(poids/taille);
+ double imc=poids/(taille*taille);
+    
+   // this.reponse.setVisible(true);
+    // this.resultIMC.setVisible(true);
+     //resultIMC.setText(""+imc);
+
+ if (imc < 18.5)
+{
+    return " votre indicateur est inferieur au IMC normal Voulez vous suivre un regime ? ";
+
+
+}
+else if (imc < 25.0)
+{
+     return " Felicitation votre IMC est dans l'ideal ";
+
+}
+else if (imc > 30.0)
+{
+     return " votre indicateur est superieur au IMC normal Voulez vous suivre un regime ? ";
+
+}
+       return "nnnn";
+     
+       
+       }
     
 
     
