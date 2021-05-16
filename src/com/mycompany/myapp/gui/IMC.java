@@ -34,7 +34,7 @@ import java.util.ArrayList;
  */
 public class IMC extends Form{
      float i,j;
-     
+     Form current;
     private Resources theme;
      public IMC(Form previous) {
 
@@ -54,7 +54,43 @@ public class IMC extends Form{
             }
         });
      
-         
+          
+          getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new ListregimeForm(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new IMC(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddregimeForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new rechercheformregime(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homenutritionniste(current).show();
+              
+
+          } }
+             );  
     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     

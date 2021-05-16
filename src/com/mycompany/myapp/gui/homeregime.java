@@ -30,9 +30,9 @@ public homeregime(Form previous){
      
            add(new Label("Choose an option"));
 
-        Button btnAddregime = new Button("Add regime");
+        Button btnAddregime = new Button("ajouter regime");
         Button btnListregime = new Button("List regime");
-        Button uppdate = new Button("Update");
+        Button uppdate = new Button("Gérer regime");
         Button IMC = new Button("IMC");
         btnAddregime.addActionListener(e -> new AddregimeForm(current).show());
         btnListregime.addActionListener(e -> new ListregimeForm(current).show());
@@ -42,10 +42,39 @@ public homeregime(Form previous){
             getToolbar().addSearchCommand(e -> {
     String text = (String)e.getSource();
             });
-          getToolbar().addCommandToLeftSideMenu("Update", null, new ActionListener(){
+         
+          getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new ListregimeForm(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new IMC(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddregimeForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer regime", null, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt) {
               new rechercheformregime(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homenutritionniste(current).show();
               
 
           }    

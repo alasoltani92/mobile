@@ -12,6 +12,8 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.table.DefaultTableModel;
 import com.codename1.ui.table.Table;
@@ -26,7 +28,7 @@ import java.util.ArrayList;
  * @author bhk
  */
 public class ListregimeForm extends Form{
-
+Form current;
     public ListregimeForm(Form previous) {
         setTitle("List regime");
             setLayout(BoxLayout.y());
@@ -79,7 +81,42 @@ add(table);
         
         
                show();
+      getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new ListregimeForm(current).show();
+              
 
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new IMC(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddregimeForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new rechercheformregime(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homenutritionniste(current).show();
+              
+
+          } }
+             );
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
 }

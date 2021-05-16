@@ -25,6 +25,7 @@ import java.util.ArrayList;
  * @author soltani med ala
  */
 public class rechercheformregime extends Form{
+    Form current;
      public rechercheformregime(Form previous) {
         setLayout(BoxLayout.y());
       setTitle("recherche regime");
@@ -79,7 +80,42 @@ public class rechercheformregime extends Form{
                 Dialog.show("Success","Connection accepted",new Command("OK"));
             }
         });         
-                 
+          getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new ListregimeForm(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new IMC(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddregimeForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new rechercheformregime(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homenutritionniste(current).show();
+              
+
+          } }
+             );         
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente
                          

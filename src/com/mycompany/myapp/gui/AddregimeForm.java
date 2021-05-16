@@ -17,13 +17,14 @@ import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 import com.mycompany.myapp.entities.regime;
 import com.mycompany.myapp.services.Serviceregime;
+import static java.util.concurrent.ThreadLocalRandom.current;
 
 /**
  *
  * @author bhk
  */
 public class AddregimeForm extends Form{
-
+Form current;
     public AddregimeForm(Form previous) {
         /*
         Le paramètre previous définit l'interface(Form) précédente.
@@ -71,6 +72,42 @@ public class AddregimeForm extends Form{
                 
             }
         });
+          getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new ListregimeForm(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new IMC(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ICM", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new rechercheformregime(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new rechercheformregime(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homenutritionniste(current).show();
+              
+
+          }    
+           } );
         
         addAll(type,tfdescription,tfimage,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
