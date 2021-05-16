@@ -13,6 +13,9 @@ import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BoxLayout;
+import com.codename1.ui.table.DefaultTableModel;
+import com.codename1.ui.table.Table;
+import com.codename1.ui.table.TableModel;
 import com.mycompany.myapp.services.Serviceregime;
 import com.mycompany.myapp.entities.regime;
 import java.io.IOException;
@@ -29,42 +32,56 @@ public class ListregimeForm extends Form{
             setLayout(BoxLayout.y());
 
         Serviceregime ServiceregimeInstance=new Serviceregime();
+        
        //sp.setText( Serviceregime.getInstance().affichageregime().toString());
         ArrayList<regime> res= ServiceregimeInstance.affichageregime();
-            Form h1=new Form(BoxLayout.y());
-        for(int i=0; i<res.size();i++)
-        {
-        
-                             Label pass = new Label("------------------------------------------------");
+        String[][] rows = new String[res.size()][];
+for(int i=0; i< rows.length;i++)
+        { 
+ rows[i] = new String[] {
+res.get(i).getType(),res.get(i).getDescription().toString(),res.get(i).getImage().toString()
+ };
+ }
 
-             Label description = new Label("description : "+res.get(i).getDescription().toString());
-        
-             Label type = new Label(" type : "+res.get(i).getType().toString());
-              try {
-                Image imgPays = Image.createImage(""+res.get(i).getImage().toString());
-                ImageViewer ivPays = new ImageViewer(imgPays);
-                   add(ivPays);
-                   
-  }
- catch (IOException ex) {
-                System.out.println(ex.getMessage());
-            }
+TableModel model = new DefaultTableModel(new String[]
+{"Type", "Description", "Image"},  rows);
+Table table = new Table(model);
+add(table);
+//
+//            Form h1=new Form(BoxLayout.y());
+//        for(int i=0; i<res.size();i++)
+//        {
+//        
+//                             Label pass = new Label("------------------------------------------------");
+//
+//             Label description = new Label("description : "+res.get(i).getDescription().toString());
+//        
+//             Label type = new Label(" type : "+res.get(i).getType().toString());
+//              try {
+//                Image imgPays = Image.createImage(""+res.get(i).getImage().toString());
+//                ImageViewer ivPays = new ImageViewer(imgPays);
+//                   add(ivPays);
+//                   
+//  }
+// catch (IOException ex) {
+//                System.out.println(ex.getMessage());
+//            }
 
             /* Image imgPays = Image.createImage("/" + res.get(i).getImage());
                             ImageViewer ivPays = new ImageViewer(imgPays);
                         ImageViewer iv2 = new ImageViewer(ivPays.getImage());*/
 
-         add(description);
-        //   add(iv2);
-           add(type);
-          add(pass);
+//         add(description);
+//        //   add(iv2);
+//           add(type);
+//          add(pass);
         
         
-        }
         
-       
+               show();
+
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
-    
-    
 }
+    
+

@@ -39,17 +39,18 @@ public homeregime(Form previous){
         uppdate.addActionListener(e -> new rechercheformregime(current).show());
         addAll(btnListregime,IMC,btnAddregime, uppdate);
           IMC.addActionListener(e -> new IMC(current).show());
-             /* getToolbar().addCommandToLeftSideMenu("Update", null, new ActionListener(){
+            getToolbar().addSearchCommand(e -> {
+    String text = (String)e.getSource();
+            });
+          getToolbar().addCommandToLeftSideMenu("Update", null, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt) {
+              new rechercheformregime(current).show();
+              
 
-             uppdatenew rechercheformregime(current).show());   
-                 
-
-          }
-
-                 
-           } );*/
+          }    
+           } );
+          
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
    FontImage arrowDown = FontImage.createMaterial(FontImage.MATERIAL_KEYBOARD_ARROW_DOWN, "Label", 3);
         
