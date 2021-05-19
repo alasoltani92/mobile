@@ -7,6 +7,7 @@ package com.mycompany.myapp.gui;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.ui.Button;
+import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
