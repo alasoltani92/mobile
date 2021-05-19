@@ -39,9 +39,7 @@ public homeregime(Form previous){
         uppdate.addActionListener(e -> new rechercheformregime(current).show());
         addAll(btnListregime,IMC,btnAddregime, uppdate);
           IMC.addActionListener(e -> new IMC(current).show());
-            getToolbar().addSearchCommand(e -> {
-    String text = (String)e.getSource();
-            });
+           
          
           getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
             @Override

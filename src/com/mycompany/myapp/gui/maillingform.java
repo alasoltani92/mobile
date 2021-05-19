@@ -23,7 +23,7 @@ import com.mycompany.myapp.services.servicenutritionniste;
  * @author soltani med ala
  */
 public class maillingform extends Form{
-    
+    Form current;
       
      public maillingform(Form previous) {
          
@@ -65,5 +65,41 @@ public class maillingform extends Form{
             
 
              });
+             getToolbar().addCommandToLeftSideMenu("List nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new listenutritionnisteform(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("Rendez-vous", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new maillingform(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddnutritionnisteForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new recherchenutritionniste(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("Home regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homeregime(current).show();
+              
+
+          } }
+             );
         
                     }}

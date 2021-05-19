@@ -23,6 +23,7 @@ import java.util.ArrayList;
  * @author soltani med ala
  */
 public class recherchenutritionniste extends Form {
+    Form current;
      public recherchenutritionniste(Form previous) {
         setLayout(BoxLayout.y());
       setTitle("recherche nutritionniste");
@@ -85,6 +86,42 @@ public class recherchenutritionniste extends Form {
                 Dialog.show("Success","Connection accepted",new Command("OK"));
             }
         });         
+               getToolbar().addCommandToLeftSideMenu("List nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new listenutritionnisteform(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("Rendez-vous", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new maillingform(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddnutritionnisteForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new recherchenutritionniste(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("Home regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homeregime(current).show();
+              
+
+          } }
+             );
                  
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente

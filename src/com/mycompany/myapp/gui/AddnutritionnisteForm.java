@@ -22,7 +22,7 @@ import com.mycompany.myapp.services.servicenutritionniste;
  * @author bhk
  */
 public class AddnutritionnisteForm extends Form{
-
+Form current;
     public AddnutritionnisteForm(Form previous) {
         /*
         Le paramètre previous définit l'interface(Form) précédente.
@@ -76,7 +76,42 @@ public class AddnutritionnisteForm extends Form{
                 
             }
         });
-        
+          getToolbar().addCommandToLeftSideMenu("List nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new listenutritionnisteform(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("Rendez-vous", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new maillingform(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddnutritionnisteForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new recherchenutritionniste(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("Home regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homeregime(current).show();
+              
+
+          } }
+             );
         addAll(tfnom,tfprenom,tfimage,tfaddr,tfnum,tfmail,btnValider);
         getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
                 , e-> previous.showBack()); // Revenir vers l'interface précédente

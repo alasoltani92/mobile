@@ -9,6 +9,8 @@ import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BoxLayout;
 
 /**
@@ -27,12 +29,47 @@ public homenutritionniste(Form previous){
         Button btnAddnutritionniste = new Button("Add nutritionniste");
 
         Button btnmail = new Button("Prendre rendez-vous");
-        Button uppdate = new Button("Update");
+        Button uppdate = new Button("Gérer nutritionniste");
         btnAddnutritionniste.addActionListener(e -> new AddnutritionnisteForm(current).show());
         btnListnutritionniste.addActionListener(e -> new listenutritionnisteform(current).show());
         btnmail.addActionListener(e -> new maillingform(current).show());
         uppdate.addActionListener(e -> new recherchenutritionniste(current).show());
+ getToolbar().addCommandToLeftSideMenu("List nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new listenutritionnisteform(current).show();
+              
 
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("Rendez-vous", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new maillingform(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddnutritionnisteForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new recherchenutritionniste(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("Home regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homeregime(current).show();
+              
+
+          } }
+             );
 
         addAll(btnListnutritionniste,btnmail,btnAddnutritionniste,uppdate );
 

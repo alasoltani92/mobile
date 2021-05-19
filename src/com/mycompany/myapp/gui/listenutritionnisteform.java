@@ -10,6 +10,8 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionEvent;
+import com.codename1.ui.events.ActionListener;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.table.DefaultTableModel;
@@ -28,6 +30,7 @@ import java.util.ArrayList;
  * @author soltani med ala
  */
 public class listenutritionnisteform extends Form{
+    Form current;
       public listenutritionnisteform(Form previous) {
       
        setTitle("List nutritionniste");
@@ -78,7 +81,46 @@ add(table);
 //       add(pass);
 //       
 //        }
+ getToolbar().addCommandToLeftSideMenu("List nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new listenutritionnisteform(current).show();
+              
+
+          }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("Rendez-vous", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new maillingform(current).show();                        
+         }    
+           } );
+           getToolbar().addCommandToLeftSideMenu("ajouter nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+            new AddnutritionnisteForm(current).show();
+            }    
+           } );
+           
+           getToolbar().addCommandToLeftSideMenu("Gérer nutritionniste", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+              new recherchenutritionniste(current).show();
+                        
+         }    
+           } );
+             getToolbar().addCommandToLeftSideMenu("Home regime", null, new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+        new homeregime(current).show();
+              
+
+          } }
+             );
         show();
+         getToolbar().addSearchCommand(e -> {
+    String text = (String)e.getSource();
+            });
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
     }
     
