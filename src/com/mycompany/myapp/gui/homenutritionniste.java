@@ -24,6 +24,11 @@ public homenutritionniste(Form previous){
    current = this; //Récupération de l'interface(Form) en cours
         setTitle("Home Nutritionniste");
         setLayout(BoxLayout.y());
+            Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
 
         Button btnListnutritionniste = new Button("List nutritionniste");
         Button btnAddnutritionniste = new Button("Add nutritionniste");
@@ -71,9 +76,11 @@ public homenutritionniste(Form previous){
           } }
              );
 
+         
         addAll(btnListnutritionniste,btnmail,btnAddnutritionniste,uppdate );
 
-       getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+        
+     getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
     
 }

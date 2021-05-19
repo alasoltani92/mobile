@@ -26,7 +26,11 @@ public homeregime(Form previous){
         setTitle("Home Regime");
         setLayout(BoxLayout.y());
         
-      
+        Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
      
            add(new Label("Choose an option"));
 

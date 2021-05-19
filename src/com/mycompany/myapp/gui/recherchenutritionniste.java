@@ -26,6 +26,11 @@ public class recherchenutritionniste extends Form {
     Form current;
      public recherchenutritionniste(Form previous) {
         setLayout(BoxLayout.y());
+          Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
       setTitle("recherche nutritionniste");
         
         TextField tfid = new TextField("","id nutritionniste");

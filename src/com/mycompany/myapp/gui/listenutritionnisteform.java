@@ -6,6 +6,7 @@
 
 import com.codename1.components.SpanLabel;
 import static com.codename1.push.PushContent.setTitle;
+import com.codename1.ui.Button;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
@@ -23,6 +24,7 @@ import com.mycompany.myapp.services.Serviceregime;
 import com.mycompany.myapp.services.servicenutritionniste;
 
 import java.util.ArrayList;
+import javafx.scene.control.Cell;
  
 
 /**
@@ -35,7 +37,11 @@ public class listenutritionnisteform extends Form{
       
        setTitle("List nutritionniste");
         setLayout(BoxLayout.y());
-
+  Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
        /* SpanLabel sp = new SpanLabel();
         servicenutritionniste ServicenutritionnisteInstance=new servicenutritionniste();
         sp.setText( servicenutritionniste.getInstance().affichagenutritionniste().toString());
@@ -53,12 +59,19 @@ for(int i=0; i< rows.length;i++)
 res.get(i).getNom(),res.get(i).getPrenom().toString(),res.get(i).getMail().toString(),res.get(i).getAddr().toString()
                       ,res.get(i).getNum().toString(),res.get(i).getImage().toString()
     };
+ 
  }
 
 TableModel model = new DefaultTableModel(new String[]
-{"nom", "prenom", "e-mail","adresse", "telephone", "image"},  rows);
+{"nom", "prenom", "e-mail","adresse", "telephone", "experience"},  rows);
 Table table = new Table(model);
+
+
+
+
+
 add(table);
+        
 //
 //        for(int i=0; i<res.size();i++)
 //        {

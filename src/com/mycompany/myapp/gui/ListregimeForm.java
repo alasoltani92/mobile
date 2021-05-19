@@ -32,7 +32,13 @@ import java.util.ArrayList;
  */
 public class ListregimeForm extends Form{
 Form current;
+
     public ListregimeForm(Form previous) {
+        Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
         setTitle("List regime");
             setLayout(BoxLayout.y());
 
@@ -103,6 +109,7 @@ Form current;
         
         
                show();
+        }
       getToolbar().addCommandToLeftSideMenu("List regime", null, new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent evt) {
@@ -139,8 +146,11 @@ Form current;
 
           } }
              );
+    
        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
+ 
     }
-    }}
+
+}
     
 

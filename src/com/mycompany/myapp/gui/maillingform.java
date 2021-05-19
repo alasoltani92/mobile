@@ -29,7 +29,11 @@ public class maillingform extends Form{
          
           setTitle("Contacter nutritionniste");
           setLayout(BoxLayout.y());
-
+  Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
             TextField tfmail = new TextField("","mail nutritionniste");
             TextField tfmail1 = new TextField("","mail adherent");
             TextField tfmsg = new TextField("","message");

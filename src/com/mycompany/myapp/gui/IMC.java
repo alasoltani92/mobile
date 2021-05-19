@@ -37,7 +37,11 @@ public class IMC extends Form{
      Form current;
     private Resources theme;
      public IMC(Form previous) {
-
+  Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
                 TextField poidsId= new TextField("", "Poids");
      TextField tailleId= new TextField("", "Taille");
     Label prenom = new Label("resultat                                                                                         \n");
@@ -91,10 +95,12 @@ public class IMC extends Form{
 
           } }
              );  
-    getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e-> previous.showBack());
 
-    
+ getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK
+                , e-> previous.showBack()); // Revenir vers l'interface précédente
+                
      
      }
+     
     
 }

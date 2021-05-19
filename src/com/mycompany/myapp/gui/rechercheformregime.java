@@ -28,6 +28,11 @@ public class rechercheformregime extends Form{
     Form current;
      public rechercheformregime(Form previous) {
         setLayout(BoxLayout.y());
+          Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
       setTitle("recherche regime");
         
         TextField tfid = new TextField("","id regime");

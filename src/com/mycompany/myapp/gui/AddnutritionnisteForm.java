@@ -31,13 +31,17 @@ Form current;
         */
         setTitle("Add a new nutritionniste");
         setLayout(BoxLayout.y());
-        
+          Button menuButton = new Button("");
+        menuButton.setUIID("Title");
+        FontImage.setMaterialIcon(menuButton, FontImage.MATERIAL_MENU);
+        menuButton.addActionListener(e -> getToolbar().openSideMenu());
+        add(menuButton);
         TextField tfnom = new TextField("","nom");
         TextField tfprenom= new TextField("", "prenom");
         TextField tfmail= new TextField("", "mail");
         TextField tfaddr = new TextField("","adresse");
         TextField tfnum = new TextField("","telephone");
-        TextField tfimage = new TextField("","image");
+        TextField tfimage = new TextField("","experience");
 
 
 
